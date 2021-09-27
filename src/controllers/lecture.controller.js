@@ -18,18 +18,18 @@ router.get("/:id", async (req, res) => {
     .populate("user_id")
     .lean()
     .exec();
-  return res.status(200).json({ post });
+  return res.status(200).json({ lecture });
 });
 
 router.patch("/:id", async (req, res) => {
   const lecture = await Lecture.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-  return res.status(200).json({ post });
+  return res.status(200).json({ lecture });
 });
 
 router.delete("/:id", async (req, res) => {
   const lecture = await Lecture.findByIdAndDelete(req.params.id);
-  return res.status(200).json({ post });
+  return res.status(200).json({ lecture });
 });
 module.exports = router;
